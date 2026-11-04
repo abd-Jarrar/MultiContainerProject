@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Caching.Hybrid;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<global::ProductService.Services.ProductService>();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.InstanceName = "ProductService:";
@@ -16,7 +17,5 @@ builder.Services.AddHybridCache(options =>
     };
 });
 var app = builder.Build();
-
-app.MapGet("/", () => "Hello World!");
-
+app.MapControllers();
 app.Run();
