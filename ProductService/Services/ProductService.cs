@@ -21,10 +21,12 @@ namespace ProductService.Services
         }
         public async Task<Product> GetProductByIdAsync(int Id, CancellationToken ct)
         {
-            logger.LogInformation("get product with the Id {Id} from the db", Id);
             string cacheKey = $"product:{Id}";
+            logger.LogInformation("trying to get product with the Id {Id} ", Id);
+
             var product = await cache.GetOrCreateAsync(cacheKey, async (ct) =>
             {
+            logger.LogInformation("get product with the Id {Id} from the db", Id);
 
                 return new Product(Id, "orange juice", 1.99m, 100);
             });

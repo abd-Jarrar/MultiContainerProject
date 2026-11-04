@@ -20,10 +20,12 @@ namespace CustomerService.Services
         }
         public async Task<Customer> GetCustomerByIdAsync(int Id, CancellationToken ct)
         {
-            logger.LogInformation("get customer with the Id {Id} from the db", Id);
             string cacheKey = $"customer:{Id}";
+            logger.LogInformation("trying to get customer with the Id {Id} ", Id);
+
             var customer = await cache.GetOrCreateAsync(cacheKey, async (ct) =>
             {
+            logger.LogInformation("get customer with the Id {Id} from the db", Id);
             
                 return new Customer(Id, "new customer",25);
             });
