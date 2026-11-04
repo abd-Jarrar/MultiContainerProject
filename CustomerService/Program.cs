@@ -18,5 +18,5 @@ builder.Services.AddScoped<global::CustomerService.Services.CustomerService>();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
-
+app.MapControllers();
 app.Run();
