@@ -6,6 +6,7 @@ builder.Services.AddControllers();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.InstanceName = "CustomerService:";
+    options.Configuration = builder.Configuration.GetConnectionString("redis");
 });
 builder.Services.AddHybridCache(options =>
 {
