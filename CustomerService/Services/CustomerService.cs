@@ -24,7 +24,7 @@ namespace CustomerService.Services
             string cacheKey = $"customer:{Id}";
             var customer = await cache.GetOrCreateAsync(cacheKey, async (ct) =>
             {
-
+            
                 return new Customer(Id, "new customer",25);
             });
             return customer;

@@ -15,6 +15,7 @@ builder.Services.AddHybridCache(options =>
         Expiration = TimeSpan.FromMinutes(5)
     };
 });
+builder.Services.AddControllers();
 var app = builder.Build();
 app.MapControllers();
 app.Run();
