@@ -2,6 +2,7 @@ using CustomerService.Services;
 using Microsoft.Extensions.Caching.Hybrid;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.InstanceName = "CustomerService:";
