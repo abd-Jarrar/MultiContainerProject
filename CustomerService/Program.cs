@@ -1,4 +1,18 @@
+using Microsoft.Extensions.Caching.Hybrid;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.InstanceName = "CustomerService:";
+});
+builder.Services.AddHybridCache(options =>
+{
+    options.DefaultEntryOptions = new HybridCacheEntryOptions
+    {
+        LocalCacheExpiration = TimeSpan.FromSeconds(30),
+        Expiration = TimeSpan.FromMinutes(5)
+    };
+});
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
