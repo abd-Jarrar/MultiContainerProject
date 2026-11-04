@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Caching.Hybrid;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<global::ProductService.Services.ProductService>();
 builder.Services.AddStackExchangeRedisCache(options =>

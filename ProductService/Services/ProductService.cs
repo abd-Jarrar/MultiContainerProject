@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Hybrid;
 
-namespace ProductService
+namespace ProductService.Services
 {
     public class ProductService(ILogger<ProductService>logger,HybridCache cache)
     {
