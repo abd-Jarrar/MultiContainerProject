@@ -7,6 +7,6 @@ RUN dotnet publish -c release -o output
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build /src/output .
-ENV ASPNETCORE_HTTP_PORTS=5164
-EXPOSE 5164
+ENV ASPNETCORE_HTTP_PORTS=5167
+EXPOSE 5167
 ENTRYPOINT ["dotnet","CustomerService.dll"]
