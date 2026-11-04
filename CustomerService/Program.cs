@@ -1,3 +1,4 @@
+using CustomerService.Services;
 using Microsoft.Extensions.Caching.Hybrid;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddHybridCache(options =>
         Expiration = TimeSpan.FromMinutes(5)
     };
 });
+builder.Services.AddScoped<global::CustomerService.Services.CustomerService>();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
